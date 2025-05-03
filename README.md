@@ -1,16 +1,24 @@
-# app_test
+# Misleading error when library is not found
 
-A new Flutter project.
+## Reproduction
 
-## Getting Started
+To reproduce this project must be built as an android bundle:
 
-This project is a starting point for a Flutter application.
+```bash
+flutter build appbundle
+```
 
-A few resources to get you started if this is your first Flutter project:
+New app should be installed as an bundle-part with bundle tool:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+1. Build apk from bundle:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```bash
+ java -jar bundletool-all-1.18.1.jar build-apks --local-testing --bundle=build/app/outputs/bundle/debug/app-debug.aab --output=apps.apks --overwrite
+```
+
+2. Install with bundletool:
+
+```bash
+java -jar bundletool-all-1.18.1.jar install-apks --apks=apps.apks
+```
+
